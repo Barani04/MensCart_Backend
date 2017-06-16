@@ -20,6 +20,7 @@ public class User {
 	private String password;
 	private String contactNo;
 	private String address;
+	private boolean enabled;
 	
 	
 	public int getUserId() {
@@ -57,6 +58,12 @@ public class User {
 	}
 	public void setContactNo(String contactNo) {
 		this.contactNo = contactNo;
+	}
+	public boolean isEnabled() {
+		return enabled;
+	}
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 	
 }

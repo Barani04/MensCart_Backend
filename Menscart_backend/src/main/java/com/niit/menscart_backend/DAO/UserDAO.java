@@ -48,4 +48,6 @@ public class UserDAO {
 		userToDelete.setUserId(id);
 		sessionFactory.getCurrentSession().delete(userToDelete);
 	}
+	
+	
 }

@@ -19,7 +19,7 @@ public class Role {
 	private String role;
 	private String userName;
 	private String emailId;
-	private long contactNo;
+	private String contactNo;
 	public int getUserId() {
 		return userId;
 	}
@@ -44,10 +44,10 @@ public class Role {
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
 	}
-	public long getContactNo() {
+	public String getContactNo() {
 		return contactNo;
 	}
-	public void setContactNo(long contactNo) {
+	public void setContactNo(String contactNo) {
 		this.contactNo = contactNo;
 	}
 	

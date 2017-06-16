@@ -22,8 +22,10 @@ public class UserTest {
 		user.setPassword("barani");
 		user.setContactNo("9874561230");
 		user.setAddress("30 xyz Street,abc,cbe-641016");
+		user.setEnabled(true);
 		
 		userDAO.saveOrUpdate(user);
+		
 	}
 
 }
