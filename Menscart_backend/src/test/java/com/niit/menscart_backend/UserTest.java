@@ -8,6 +8,7 @@ import com.niit.menscart_backend.model.User;
 public class UserTest {
 	public static void main(String args[]) {
 		
+		@SuppressWarnings("resource")
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 		context.scan("com.niit.menscart_backend");
 		context.refresh();
@@ -18,6 +19,8 @@ public class UserTest {
 		User user = (User) context.getBean("user");
 		
 		user.setUserName("Barani");
+		user.setFirstName("Barani");
+		user.setLastName("Vignesh");
 		user.setEmailId("barani04@gmail.com");
 		user.setPassword("barani");
 		user.setContactNo("9874561230");
