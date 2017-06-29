@@ -25,10 +25,14 @@ public class CategoryDAO {
 		return cat;
 	}
 	
+	public void save(Category cat){
+		
+		sessionFactory.getCurrentSession().save(cat);
+		
+	}
+	
 	public void saveOrUpdate(Category cat){
-		
 		sessionFactory.getCurrentSession().saveOrUpdate(cat);
-		
 	}
 
 	@SuppressWarnings("unchecked")

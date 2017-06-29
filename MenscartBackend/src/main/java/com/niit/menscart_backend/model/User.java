@@ -1,23 +1,27 @@
 package com.niit.menscart_backend.model;
 
-/*import javax.persistence.CascadeType;*/
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-/*import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;*/
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
 @Entity
-@Table(name="User")
+@Table(name="user")
 @Component
 public class User {
 	@Id
+	@Column(name = "userId")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)  
 	private int userId;
+	
+	
 	private String userName;
 	private String firstName;
 	private String lastName;
@@ -27,11 +31,17 @@ public class User {
 	private String address;
 	private boolean enabled;
 	
-	/*@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="id")
-	private Role role;*/
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="userId")
+	private Role role;
+
 	
-	
+	public Role getRole() {
+		return role;
+	}
+	public void setRole(Role role) {
+		this.role = role;
+	}
 	public int getUserId() {
 		return userId;
 	}

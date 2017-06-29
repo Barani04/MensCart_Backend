@@ -20,7 +20,7 @@ public class ProductDAO {
 		this.sessionFactory =sessionFactory;
 	}
 	
-	public Product getByProductId(int productId){
+	public Product getProductId(int productId){
 		Product pro = (Product) sessionFactory.getCurrentSession().get(Product.class, productId);
 		return pro;
 	}
@@ -32,6 +32,10 @@ public class ProductDAO {
 
 	public void saveOrUpdate(Product pro){
 		sessionFactory.getCurrentSession().saveOrUpdate(pro);
+	}
+	
+	public void save(Product pro){
+		sessionFactory.getCurrentSession().save(pro);
 	}
 	
 	@SuppressWarnings("unchecked")

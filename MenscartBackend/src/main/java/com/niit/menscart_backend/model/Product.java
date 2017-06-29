@@ -1,12 +1,15 @@
 package com.niit.menscart_backend.model;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name="product")
@@ -23,6 +26,17 @@ public class Product {
 	private int price;
 	private int categoryId;
 	private int supplierId;
+	
+	@Transient
+	MultipartFile pimage;
+	
+	
+	public MultipartFile getPimage() {
+		return pimage;
+	}
+	public void setPimage(MultipartFile pimage) {
+		this.pimage = pimage;
+	}
 	public int getProductId() {
 		return productId;
 	}

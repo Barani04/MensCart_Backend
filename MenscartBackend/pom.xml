@@ -21,19 +21,20 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
 			<version>4.3.8.RELEASE</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.springframework/spring-context-->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>4.3.8.RELEASE</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.springframework/spring-tx-->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-tx -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
@@ -69,7 +70,16 @@
 			<artifactId>hibernate-validator</artifactId>
 			<version>4.3.2.Final</version>
 		</dependency>
-		<!--https://mvnrepository.com/artifact/com.h2database/h2-->
+
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>4.3.8.RELEASE</version>
+		</dependency>
+
+
+		<!--https://mvnrepository.com/artifact/com.h2database/h2 -->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
