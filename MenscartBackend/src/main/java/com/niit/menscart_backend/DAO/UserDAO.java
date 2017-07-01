@@ -28,6 +28,12 @@ public class UserDAO {
 		 
 		 return user;
 	}
+	
+	public User getByUserName(String userName) {
+		User user = (User) sessionFactory.getCurrentSession().get(User.class, userName);
+		 
+		 return user;
+	}
 	public User getByEmailId(String emailId) {
 		User user = (User) sessionFactory.getCurrentSession().get(User.class, emailId);
 		 
