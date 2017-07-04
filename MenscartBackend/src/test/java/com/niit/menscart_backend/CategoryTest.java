@@ -25,7 +25,7 @@ public class CategoryTest {
 	public static void initialize()
 	{
 		context = new AnnotationConfigApplicationContext();
-		context.scan("com.niit.menscart_backend");
+		context.scan("com.niit.*");
 		context.refresh();
 		
 		catdao =  (CategoryDAO) context.getBean("CategoryDAO");

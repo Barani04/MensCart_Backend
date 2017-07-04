@@ -33,7 +33,7 @@ public class CartTest {
 	
 	@Test
 	public void createCartTest(){
-		cart.setDays(9);
+		cart.setCartId(1001);
 		cart.setEmailId("hgf@gmail.com");
 		cart.setPrice(90);
 		cart.setProductId(6);

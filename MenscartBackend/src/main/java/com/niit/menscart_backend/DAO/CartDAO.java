@@ -25,9 +25,9 @@ public class CartDAO {
 		 return cart;
 	}
 	
-	public void saveOrUpdate(Cart cart){
+	public void saveOrUpdate(Cart cartitem){
 		
-		sessionFactory.getCurrentSession().saveOrUpdate(cart);
+		sessionFactory.getCurrentSession().saveOrUpdate(cartitem);
 		
 	}
 	
@@ -38,7 +38,7 @@ public class CartDAO {
 	
 	public void delete(int id){
 		Cart cartToDelete = new Cart();
-		cartToDelete.setCartId(id);
+		cartToDelete.setItemId(id);
 		sessionFactory.getCurrentSession().delete(cartToDelete);
 	}
 }

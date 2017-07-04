@@ -1,10 +1,14 @@
 package com.niit.menscart_backend.model;
 
+import java.util.Date;
+
+import javax.annotation.Generated;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 import org.springframework.stereotype.Component;
 
@@ -14,8 +18,9 @@ import org.springframework.stereotype.Component;
 public class Cart {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int cartId;
+	private int ItemId;
 	
+	private int cartId;
 	private int productId;
 	private String productName;
 	private int userId;
@@ -24,14 +29,25 @@ public class Cart {
 	private int price;
 	private int qty;
 	private int total;
-	private int days;
 	private String status;
 	private int shipmentId;
+	
+	@Generated(value = { "" })
+	@Temporal(javax.persistence.TemporalType.DATE)
+	private Date date = new java.sql.Date(new java.util.Date().getTime());
+	
+	
 	public int getCartId() {
 		return cartId;
 	}
 	public void setCartId(int cartId) {
 		this.cartId = cartId;
+	}
+	public int getItemId() {
+		return ItemId;
+	}
+	public void setItemId(int itemId) {
+		ItemId = itemId;
 	}
 	public int getProductId() {
 		return productId;
@@ -69,6 +85,12 @@ public class Cart {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
 	public int getQty() {
 		return qty;
 	}
@@ -80,12 +102,6 @@ public class Cart {
 	}
 	public void setTotal(int total) {
 		this.total = total;
-	}
-	public int getDays() {
-		return days;
-	}
-	public void setDays(int days) {
-		this.days = days;
 	}
 	public String getStatus() {
 		return status;
