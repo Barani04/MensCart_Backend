@@ -2,6 +2,8 @@ package com.niit.menscart_backend.DAO;
 
 import java.util.List;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -36,9 +38,45 @@ public class CartDAO {
 		return sessionFactory.getCurrentSession().createQuery("from Category").list();
 	}
 	
-	public void delete(int id){
-		Cart cartToDelete = new Cart();
-		cartToDelete.setItemId(id);
-		sessionFactory.getCurrentSession().delete(cartToDelete);
+	public List<Cart> getCartItems(String username)
+	{
+		Session session = sessionFactory.openSession();
+		Query query= session.createQuery("from Cart where username=:username and status='N'");
+		query.setParameter("username", username);
+		@SuppressWarnings("unchecked")
+		List<Cart> list = query.list();
+		return list;
+	}
+ 	
+	public void deleteCartItem(Cart cart){
+		sessionFactory.getCurrentSession().delete(cart);
+	}
+	
+	public Cart getByUserandProduct(String username,int productId){
+		Session session = sessionFactory.openSession();
+		Query query =session.createQuery("from Cart where username=:username and productid=:productId");
+		query.setParameter("username", username);
+		query.setParameter("productId", productId);
+		
+		@SuppressWarnings("unchecked")
+		List<Cart> listCart = (List<Cart>)query.list();
+		
+		if(listCart !=null && !listCart.isEmpty()){
+			return listCart.get(0);
+		}
+		return null;
+	}
+	public boolean itemAlreadyExist(String username,int productId) {
+		Session session = sessionFactory.openSession();
+		Query query = session.createQuery("from Cart where username=:username and productid=:productId");
+		query.setParameter("username", username);
+		query.setParameter("productId", productId);
+		
+		@SuppressWarnings("unchecked")
+		List<Cart> list = (List<Cart>)query.list();
+		if(list !=null && !list.isEmpty()){
+			return true;
+		}
+		return false;
 	}
 }

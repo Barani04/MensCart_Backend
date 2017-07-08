@@ -2,8 +2,7 @@ package com.niit.menscart_backend.DAO;
 
 import java.util.List;
 
-
-
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -30,9 +29,15 @@ public class UserDAO {
 	}
 	
 	public User getByUserName(String userName) {
-		User user = (User) sessionFactory.getCurrentSession().get(User.class, userName);
-		 
-		 return user;
+		/*User user = (User) sessionFactory.getCurrentSession().get(User.class, userName);*/
+		 String sql ="from User where username='"+ userName +"'";
+		 Query query = sessionFactory.getCurrentSession().createQuery(sql);
+		 @SuppressWarnings("unchecked")
+		List<User> listUser = (List<User>)query.list();
+		 if(listUser!=null &&!listUser.isEmpty()){
+			 return listUser.get(0);
+		 }
+		 return null;
 	}
 	public User getByEmailId(String emailId) {
 		User user = (User) sessionFactory.getCurrentSession().get(User.class, emailId);
