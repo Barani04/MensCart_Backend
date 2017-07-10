@@ -22,8 +22,8 @@ public class CartDAO {
 		this.sessionFactory = sessionFactory;
 	}
 	
-	public Cart getByCartId(int cartId){
-		 Cart cart = (Cart) sessionFactory.getCurrentSession().get(Cart.class, cartId);
+	public Cart getByItemId(int itemId){
+		 Cart cart = (Cart) sessionFactory.getCurrentSession().get(Cart.class, itemId);
 		 return cart;
 	}
 	
@@ -79,4 +79,6 @@ public class CartDAO {
 		}
 		return false;
 	}
+	
+	
 }

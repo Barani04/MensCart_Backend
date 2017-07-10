@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 public class Cart {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int ItemId;
+	private int itemId;
 	
 	private int cartId;
 	private int productId;
@@ -43,11 +43,12 @@ public class Cart {
 	public void setCartId(int cartId) {
 		this.cartId = cartId;
 	}
+	
 	public int getItemId() {
-		return ItemId;
+		return itemId;
 	}
 	public void setItemId(int itemId) {
-		ItemId = itemId;
+		this.itemId = itemId;
 	}
 	public int getProductId() {
 		return productId;

@@ -21,6 +21,7 @@ public class Shipment {
 	private String userName;
 	private String contactNo;
 	private String address;
+	
 	public int getShipmentId() {
 		return shipmentId;
 	}

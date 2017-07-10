@@ -13,7 +13,6 @@ import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.niit.menscart_backend.DAO.BillingDAO;
 import com.niit.menscart_backend.DAO.CartDAO;
 import com.niit.menscart_backend.DAO.CategoryDAO;
 import com.niit.menscart_backend.DAO.ProductDAO;
@@ -21,7 +20,6 @@ import com.niit.menscart_backend.DAO.RoleDAO;
 import com.niit.menscart_backend.DAO.ShipmentDAO;
 import com.niit.menscart_backend.DAO.SupplierDAO;
 import com.niit.menscart_backend.DAO.UserDAO;
-import com.niit.menscart_backend.model.Billing;
 import com.niit.menscart_backend.model.Cart;
 import com.niit.menscart_backend.model.Category;
 import com.niit.menscart_backend.model.Product;
@@ -73,7 +71,6 @@ public class DBConfig {
 		sessionBuilder.addAnnotatedClass(Product.class);
 		sessionBuilder.addAnnotatedClass(Supplier.class);
 		sessionBuilder.addAnnotatedClass(Shipment.class);
-		sessionBuilder.addAnnotatedClass(Billing.class);
 		sessionBuilder.addAnnotatedClass(Cart.class);
 		sessionBuilder.addAnnotatedClass(Role.class);
 		
@@ -118,12 +115,6 @@ public class DBConfig {
 		return new ShipmentDAO(sessionFactory);
 	}
 
-	@Autowired(required = true)
-	@Bean(name = "BillingDAO")
-	public BillingDAO getBillingDAO(SessionFactory sessionFactory){
-		return new BillingDAO(sessionFactory);
-	}
-	
 	@Autowired(required = true)
 	@Bean(name = "CartDAO")
 	public CartDAO getCartDAO(SessionFactory sessionFactory){

@@ -23,17 +23,11 @@ public class User {
 	@Column(name = "userId")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)  
 	private int userId;
-	/*@Size(min=5, max=10, message="The username must be between 5 to 10 characters..")*/
 	private String userName;
 	private String firstName;
 	private String lastName;
-	/*@Pattern(regexp="[0-9].+@+\\..",message="Invalid Email format")*/
 	private String emailId;
-	/*@Size(min=5, max=10, message="The password must be between 5 to 10 characters..")
-	@NotNull (message="password must not be empty")*/
 	private String password;
-	/*@Size(min=10,max=10,message="Contact number must be 10 digits")
-	@Pattern(regexp="[0-9]",message="Contact number should only be numbers")*/
 	private String contactNo;
 	private String address;
 	private boolean enabled;
