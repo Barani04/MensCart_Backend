@@ -17,68 +17,73 @@ public class CartDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-	
-	public CartDAO(SessionFactory sessionFactory){
+
+	public CartDAO(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-	
-	public Cart getByItemId(int itemId){
-		 Cart cart = (Cart) sessionFactory.getCurrentSession().get(Cart.class, itemId);
-		 return cart;
+
+	public Cart getByItemId(int itemId) {
+		Cart cart = (Cart) sessionFactory.getCurrentSession().get(Cart.class, itemId);
+		return cart;
 	}
-	
-	public void saveOrUpdate(Cart cartitem){
-		
+
+	public void saveOrUpdate(Cart cartitem) {
+
 		sessionFactory.getCurrentSession().saveOrUpdate(cartitem);
-		
+
 	}
-	
+
+	public void save(Cart cartitem) {
+
+		sessionFactory.getCurrentSession().save(cartitem);
+
+	}
+
 	@SuppressWarnings("unchecked")
-	public List<Cart> list(){
+	public List<Cart> list() {
 		return sessionFactory.getCurrentSession().createQuery("from Category").list();
 	}
-	
-	public List<Cart> getCartItems(String username)
-	{
+
+	public List<Cart> getCartItems(String username) {
 		Session session = sessionFactory.openSession();
-		Query query= session.createQuery("from Cart where username=:username and status='N'");
+		Query query = session.createQuery("from Cart where username=:username and status='N'");
 		query.setParameter("username", username);
 		@SuppressWarnings("unchecked")
 		List<Cart> list = query.list();
 		return list;
 	}
- 	
-	public void deleteCartItem(Cart cart){
+
+	public void deleteCartItem(Cart cart) {
 		sessionFactory.getCurrentSession().delete(cart);
 	}
-	
-	public Cart getByUserandProduct(String username,int productId){
-		Session session = sessionFactory.openSession();
-		Query query =session.createQuery("from Cart where username=:username and productid=:productId");
-		query.setParameter("username", username);
-		query.setParameter("productId", productId);
-		
-		@SuppressWarnings("unchecked")
-		List<Cart> listCart = (List<Cart>)query.list();
-		
-		if(listCart !=null && !listCart.isEmpty()){
-			return listCart.get(0);
-		}
-		return null;
-	}
-	public boolean itemAlreadyExist(String username,int productId) {
+
+	public Cart getByUserandProduct(String username, int productId) {
 		Session session = sessionFactory.openSession();
 		Query query = session.createQuery("from Cart where username=:username and productid=:productId");
 		query.setParameter("username", username);
 		query.setParameter("productId", productId);
-		
+
 		@SuppressWarnings("unchecked")
-		List<Cart> list = (List<Cart>)query.list();
-		if(list !=null && !list.isEmpty()){
+		List<Cart> listCart = (List<Cart>) query.list();
+
+		if (listCart != null && !listCart.isEmpty()) {
+			return listCart.get(0);
+		}
+		return null;
+	}
+
+	public boolean itemAlreadyExist(String username, int productId) {
+		Session session = sessionFactory.openSession();
+		Query query = session.createQuery("from Cart where username=:username and productid=:productId");
+		query.setParameter("username", username);
+		query.setParameter("productId", productId);
+
+		@SuppressWarnings("unchecked")
+		List<Cart> list = (List<Cart>) query.list();
+		if (list != null && !list.isEmpty()) {
 			return true;
 		}
 		return false;
 	}
-	
-	
+
 }

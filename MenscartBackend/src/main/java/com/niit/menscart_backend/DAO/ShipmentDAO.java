@@ -2,6 +2,8 @@ package com.niit.menscart_backend.DAO;
 
 import java.util.List;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -42,4 +44,24 @@ public class ShipmentDAO {
 		shipToDelete.setShipmentId(id);
 		sessionFactory.getCurrentSession().delete(shipToDelete);
 	}
+	
+	@SuppressWarnings("unchecked")
+	public Shipment getByUserName(String userName){
+		Session session = sessionFactory.openSession();
+		Query query = session.createQuery("from Shipment where username=:username");
+		List<Shipment> listShip=(List<Shipment>) query.list();
+		if(listShip!=null&&!listShip.isEmpty()){
+			return listShip.get(0);
+		}
+		return null;
+		
+	}
+	public List<Shipment> getByUserId(int id) {
+		String hql = "from Shipment where userId =" + "'" + id + "'";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		@SuppressWarnings("unchecked")
+		List<Shipment> list = (List<Shipment>) query.list();
+		return list;	
+	}
+
 }

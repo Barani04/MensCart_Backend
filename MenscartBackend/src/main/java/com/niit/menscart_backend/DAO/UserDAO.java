@@ -26,12 +26,9 @@ public class UserDAO {
 
 		return user;
 	}
+	
 
 	public User getByUserName(String userName) {
-		/*
-		 * User user = (User) sessionFactory.getCurrentSession().get(User.class,
-		 * userName);
-		 */
 		String sql = "from User where username='" + userName + "'";
 		Query query = sessionFactory.getCurrentSession().createQuery(sql);
 		@SuppressWarnings("unchecked")
