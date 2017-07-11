@@ -97,5 +97,14 @@ public class CartDAO {
 		}
 		return false;
 	}
+	
+	public List<Cart> getDispatchItems(String username) {
+		Session session = sessionFactory.openSession();
+		Query query = session.createQuery("from Cart where username=:username and status='Dispatched'");
+		query.setParameter("username", username);
+		@SuppressWarnings("unchecked")
+		List<Cart> list = query.list();
+		return list;
+	}
 
 }
