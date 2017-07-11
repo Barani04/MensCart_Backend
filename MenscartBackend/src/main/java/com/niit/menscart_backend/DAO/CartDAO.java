@@ -85,5 +85,17 @@ public class CartDAO {
 		}
 		return false;
 	}
+	public boolean getByUserName(String username) {
+		Session session = sessionFactory.openSession();
+		Query query = session.createQuery("from Cart where username=:username");
+		query.setParameter("username", username);
+
+		@SuppressWarnings("unchecked")
+		List<Cart> list = (List<Cart>) query.list();
+		if (list != null && !list.isEmpty()) {
+			return true;
+		}
+		return false;
+	}
 
 }
