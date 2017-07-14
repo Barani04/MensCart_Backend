@@ -46,7 +46,7 @@ public class CartDAO {
 
 	public List<Cart> getCartItems(String username) {
 		Session session = sessionFactory.openSession();
-		Query query = session.createQuery("from Cart where username=:username and status='N'");
+		Query query = session.createQuery("from Cart where username=:username and status='New'");
 		query.setParameter("username", username);
 		@SuppressWarnings("unchecked")
 		List<Cart> list = query.list();
@@ -74,7 +74,7 @@ public class CartDAO {
 
 	public boolean itemAlreadyExist(String username, int productId) {
 		Session session = sessionFactory.openSession();
-		Query query = session.createQuery("from Cart where username=:username and productid=:productId");
+		Query query = session.createQuery("from Cart where username=:username and productid=:productId and status='New'");
 		query.setParameter("username", username);
 		query.setParameter("productId", productId);
 

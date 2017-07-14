@@ -1,8 +1,9 @@
 package com.niit.menscart_backend.model;
 
+import java.sql.Time;
 import java.util.Date;
 
-import javax.annotation.Generated;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,10 +33,14 @@ public class Cart {
 	private String status;
 	private int shipmentId;
 	
-	@Generated(value = { "" })
 	@Temporal(javax.persistence.TemporalType.DATE)
-	private Date date = new java.sql.Date(new java.util.Date().getTime());
+	private Date cuDate;
 	
+	
+	private Time time;
+	
+	@Temporal(javax.persistence.TemporalType.DATE)
+	private Date dDate;
 	
 	public int getCartId() {
 		return cartId;
@@ -86,11 +91,24 @@ public class Cart {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public Date getDate() {
-		return date;
+	
+	public Date getCuDate() {
+		return cuDate;
 	}
-	public void setDate(Date date) {
-		this.date = date;
+	public void setCuDate(Date cuDate) {
+		this.cuDate = cuDate;
+	}
+	public Time getTime() {
+		return time;
+	}
+	public void setTime(Time time) {
+		this.time = time;
+	}
+	public Date getdDate() {
+		return dDate;
+	}
+	public void setdDate(Date dDate) {
+		this.dDate = dDate;
 	}
 	public int getQty() {
 		return qty;

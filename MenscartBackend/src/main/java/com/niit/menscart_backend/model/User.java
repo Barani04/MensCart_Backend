@@ -9,10 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-/*import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;*/
-
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -23,6 +19,8 @@ public class User {
 	@Column(name = "userId")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)  
 	private int userId;
+	
+	
 	private String userName;
 	private String firstName;
 	private String lastName;
@@ -30,6 +28,7 @@ public class User {
 	private String password;
 	private String contactNo;
 	private String address;
+	
 	private boolean enabled;
 	
 	@OneToOne(cascade=CascadeType.ALL)
