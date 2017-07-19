@@ -42,6 +42,8 @@ public class Cart {
 	@Temporal(javax.persistence.TemporalType.DATE)
 	private Date dDate;
 	
+	private int days;
+	
 	public int getCartId() {
 		return cartId;
 	}
@@ -133,6 +135,12 @@ public class Cart {
 	}
 	public void setShipmentId(int shipmentId) {
 		this.shipmentId = shipmentId;
+	}
+	public int getDays() {
+		return days;
+	}
+	public void setDays(int days) {
+		this.days = days;
 	}
 	
 	

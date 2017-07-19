@@ -106,5 +106,14 @@ public class CartDAO {
 		List<Cart> list = query.list();
 		return list;
 	}
+	
+	public List<Cart> getAllItems() {
+		Session session = sessionFactory.openSession();
+		Query query = session.createQuery("from Cart where status='Dispatched' order by itemId");
+		@SuppressWarnings("unchecked")
+		List<Cart> list = query.list();
+		return list;
+	}
+	
 
 }
