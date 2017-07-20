@@ -109,7 +109,7 @@ public class CartDAO {
 	
 	public List<Cart> getAllItems() {
 		Session session = sessionFactory.openSession();
-		Query query = session.createQuery("from Cart where status='Dispatched' order by itemId");
+		Query query = session.createQuery("from Cart where status='Dispatched'and days > -2 order by itemId");
 		@SuppressWarnings("unchecked")
 		List<Cart> list = query.list();
 		return list;
